@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="200dp"
+    android:layout_height="200dp"
+    tools:context=".DetailAccidentFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/buttonExit"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="2dp"
+            android:backgroundTint="@color/white"
+            android:text="@string/x"
+            android:textColor="@color/black" />
+
+        <ImageView
+            android:id="@+id/imageAccident"
+            android:layout_width="match_parent"
+            android:layout_height="93dp"
+            android:src="@drawable/car_accident"
+            android:contentDescription="Image pour un accident de voiture" />
+
+        <TextView
+            android:id="@+id/textTypeAccident"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:text="@string/accident_de_voiture" />
+
+        <TextView
+            android:id="@+id/textGavite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/gaviteelevee"
+            android:textAlignment="center"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+
+</FrameLayout>

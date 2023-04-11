@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">GoGoWaze</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="accident_de_voiture">Accident de voiture</string>
+    <string name="gaviteelevee">Gavité élevée</string>
+    <string name="x">X</string>
+    <string name="accident_voiture">Accident voiture</string>
+    <string name="gravity">Gravité:</string>
+    <string name="faible">Faible</string>
+    <string name="moderee">Modérée</string>
+    <string name="type">Type:</string>
+    <string name="voiture">Voiture</string>
+    <string name="moto">Moto</string>
+    <string name="camion">Camion</string>
+    <string name="velo">Vélo</string>
+    <string name="pieton">Piéton</string>
+    <string name="elevee">Élevée</string>
+    <string name="image">Image:</string>
+    <string name="description">Description:</string>
+    <string name="loremIpsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
 </resources>
