@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="spinner1" type="id" />
+    <item name="spinner2" type="id" />
+    <item name="spinner3" type="id" />
+    <item name="radioButton2" type="id" />
+    <item name="radioButton3" type="id" />
+    <item name="radioButton4" type="id" />
+    <item name="radioButton5" type="id" />
+    <item name="spinnerLanguage" type="id" />
+</resources>

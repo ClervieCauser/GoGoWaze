@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.gogowaze.databinding.ActivityMainBinding;
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.settings:
                     replaceFragment(new SettingsFragment());
+                    Intent intent = new Intent(getApplicationContext(), ConfigurationActivity.class);
+                    startActivity(intent);
                     break;
                 case R.id.stats:
                     replaceFragment(new StatsFragment());
