@@ -11,11 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link EmergencyFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class EmergencyFragment extends Fragment implements View.OnClickListener  {
     private Button mButton15;
 
