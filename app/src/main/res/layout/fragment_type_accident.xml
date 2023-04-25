@@ -1,29 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/table_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+    <!-- En-têtes de colonne pour le premier fragment -->
+    <TableRow>
+        <TextView
+            android:text="Colonne 1"
+            android:textStyle="bold"
+            android:padding="10dp" />
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/moto"/>
+        <TextView
+            android:text="Colonne 2"
+            android:textStyle="bold"
+            android:padding="10dp" />
+    </TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ACCIDENT pPII"/>
+    <!-- Lignes de données pour le premier fragment -->
+    <TableRow>
+        <TextView
+            android:text="Donnée 1"
+            android:padding="10dp" />
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/truck"/>
+        <TextView
+            android:text="Donnée 2"
+            android:padding="10dp" />
+    </TableRow>
 
-        </LinearLayout>
+    <TableRow>
+        <TextView
+            android:text="Donnée 3"
+            android:padding="10dp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:text="Donnée 4"
+            android:padding="10dp" />
+    </TableRow>
 
+</TableLayout>

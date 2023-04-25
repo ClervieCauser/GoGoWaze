@@ -1,28 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/table_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/moto"/>
+    <!-- En-têtes de colonne pour le deuxième fragment -->
+    <TableRow>
+        <TextView
+            android:text="Colonne 1"
+            android:textStyle="bold"
+            android:padding="10dp" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="GRAVITE"/>
+            android:text="Colonne 2"
+            android:textStyle="bold"
+            android:padding="10dp" />
+    </TableRow>
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/truck"/>
+    <!-- Lignes de données pour le deuxième fragment -->
+    <TableRow>
+        <TextView
+            android:text="Donnée 5"
+            android:padding="10dp" />
 
-    </LinearLayout>
+        <TextView
+            android:text="Donnée 6"
+            android:padding="10dp" />
+    </TableRow>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TableRow>
+        <TextView
+            android:text="Donnée 7"
+            android:padding="10dp" />
+
+        <TextView
+            android:text="Donnée 8"
+            android:padding="10dp" />
+    </TableRow>
+
+</TableLayout>
