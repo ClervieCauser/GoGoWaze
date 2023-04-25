@@ -28,6 +28,10 @@
             android:exported="false"
             android:configChanges="orientation"/>
 
+        <activity android:name=".ProfilPageActivity"
+            android:exported="false"
+            android:configChanges="orientation"/>
+
     </application>
 
 </manifest>

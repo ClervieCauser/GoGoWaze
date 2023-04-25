@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.profile:
                     replaceFragment(new ProfileFragment());
+                    Intent intent3 = new Intent(getApplicationContext(), ProfilPageActivity.class);
+                    startActivity(intent3);
                     break;
                 case R.id.sos:
                     replaceFragment(new EmergencyCallFragment());
