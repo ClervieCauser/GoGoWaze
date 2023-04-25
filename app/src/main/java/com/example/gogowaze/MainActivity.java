@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.stats:
                     replaceFragment(new StatsFragment());
+                    Intent intent2 = new Intent(getApplicationContext(), StatisticsActivity.class);
+                    startActivity(intent2);
                     break;
                 case R.id.warning:
                     replaceFragment(new SignalFragment());
