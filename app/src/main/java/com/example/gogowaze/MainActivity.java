@@ -10,6 +10,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +20,8 @@ import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.ItemizedIconOverlay;
+import org.osmdroid.views.overlay.ItemizedOverlayWithFocus;
 import org.osmdroid.views.overlay.OverlayItem;
 
 import com.example.gogowaze.databinding.ActivityMainBinding;
@@ -39,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        //mise en place de la map
         map = findViewById(R.id.map);
         map.setTileSource(TileSourceFactory.MAPNIK); // render
         map.setBuiltInZoomControls(true); // zoom
@@ -46,6 +50,28 @@ public class MainActivity extends AppCompatActivity {
         IMapController mapControler = map.getController();
         mapControler.setZoom(18.0);
         mapControler.setCenter(startPoint);
+
+        //mise en place des fidget de la map
+        ArrayList<OverlayItem> items = new ArrayList<>();
+        OverlayItem voiture = new OverlayItem("voiture", "faible", new GeoPoint(43.65020,7.00517));
+        Drawable m = voiture.getMarker(0);
+        items.add(voiture);
+        items.add(new OverlayItem("moto", "moderer", new GeoPoint(43.64950, 7.00517)));
+
+        ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(getApplicationContext(),
+                items, new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
+            @Override
+            public boolean onItemSingleTapUp(int index, OverlayItem item) {
+                return true;
+            }
+
+            @Override
+            public boolean onItemLongPress(int index, OverlayItem item) {
+                return false;
+            }
+        });
+        mOverlay.setFocusItemsOnTap(true);
+        map.getOverlays().add(mOverlay);
 
         //Rajouter ici le fragment par défaut
 
@@ -84,4 +110,15 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        map.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        map.onResume();
+    }
 }
