@@ -19,6 +19,7 @@ import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
+import org.osmdroid.views.CustomZoomButtonsDisplay;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.ItemizedIconOverlay;
 import org.osmdroid.views.overlay.ItemizedOverlayWithFocus;
@@ -45,7 +46,12 @@ public class MainActivity extends AppCompatActivity {
         //mise en place de la map
         map = findViewById(R.id.map);
         map.setTileSource(TileSourceFactory.MAPNIK); // render
-        map.setBuiltInZoomControls(true); // zoom
+        map.getZoomController().activate();
+        CustomZoomButtonsDisplay customZoomButtonsDisplay = map.getZoomController().getDisplay();
+        customZoomButtonsDisplay.setPositions(false,
+                CustomZoomButtonsDisplay.HorizontalPosition.RIGHT,
+                CustomZoomButtonsDisplay.VerticalPosition.CENTER);
+
         GeoPoint startPoint = new GeoPoint(43.65020, 07.00517);
         IMapController mapControler = map.getController();
         mapControler.setZoom(18.0);
