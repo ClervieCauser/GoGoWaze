@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="spinnerLanguage" >
+    <item>français</item>
+    <item>anglais</item>
+    <item>espagnol</item>
+
+    </string-array>
+    <string-array name="typeAccident" >
+    <item>voiture</item>
+    <item>camion</item>
+    <item>moto</item>
+    <item>piéton</item>
+
+    </string-array>
+
+    <string-array name="gravite" >
+    <item>faible</item>
+    <item>moyen</item>
+    <item>grave</item>
+    </string-array>
+
+    <string-array name="perimetre" >
+    <item>2km</item>
+    <item>-10km</item>
+    <item>+10jm</item>
+</string-array>
+
+</resources>

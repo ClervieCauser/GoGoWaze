@@ -1,0 +1,40 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/table_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- En-têtes de colonne pour le premier fragment -->
+    <TableRow>
+        <TextView
+            android:text="Colonne 1"
+            android:textStyle="bold"
+            android:padding="10dp" />
+
+        <TextView
+            android:text="Colonne 2"
+            android:textStyle="bold"
+            android:padding="10dp" />
+    </TableRow>
+
+    <!-- Lignes de données pour le premier fragment -->
+    <TableRow>
+        <TextView
+            android:text="Donnée 1"
+            android:padding="10dp" />
+
+        <TextView
+            android:text="Donnée 2"
+            android:padding="10dp" />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:text="Donnée 3"
+            android:padding="10dp" />
+
+        <TextView
+            android:text="Donnée 4"
+            android:padding="10dp" />
+    </TableRow>
+
+</TableLayout>

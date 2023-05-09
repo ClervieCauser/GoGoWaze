@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".NaviagtionFragment">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageLoupe"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="Image d'une loupe"
+            android:src="@drawable/loupe"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <EditText
+            android:id="@+id/rechercher"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:hint="search"
+            app:layout_constraintLeft_toRightOf="@id/imageLoupe"
+            app:layout_constraintTop_toTopOf="parent"/>
+        <Button
+            android:id="@+id/buttonRechercher"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:text="Rechercher"
+            app:layout_constraintLeft_toRightOf="@id/rechercher"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="7dp"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:layout_marginLeft="20dp"/>
+
+        <Button
+            android:id="@+id/buttonAnnuler"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:text="Annuler"
+            app:layout_constraintLeft_toRightOf="@id/rechercher"
+            app:layout_constraintTop_toBottomOf="@id/buttonRechercher"
+            android:textSize="7dp"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:layout_marginLeft="20dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+</FrameLayout>

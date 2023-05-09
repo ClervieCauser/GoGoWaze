@@ -2,10 +2,6 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
     <stroke
-        android:width="4dp"
-<<<<<<< HEAD
+        android:width="2dp"
         android:color="@color/black" />
-=======
-        android:color="@color/black"/>
->>>>>>> 505361a759c0e56eca09111cf81c1f550ef44f57
 </shape>

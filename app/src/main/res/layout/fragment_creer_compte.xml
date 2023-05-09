@@ -173,8 +173,8 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="15dp"
-                android:backgroundTint="@color/black"
                 android:src="@drawable/upload"
+                android:backgroundTint="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/textPhotoDeProfil"
                 app:layout_constraintTop_toTopOf="parent" />
