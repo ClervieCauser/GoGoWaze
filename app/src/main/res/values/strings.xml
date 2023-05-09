@@ -19,4 +19,14 @@
     <string name="image">Image:</string>
     <string name="description">Description:</string>
     <string name="loremIpsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
+    <string name="connecter">Se connecter</string>
+    <string name="username">Pseudo :</string>
+    <string name="password">Mot de passe :</string>
+    <string name="forgottenPassword">Forgot your password ?</string>
+    <string name="signUp">Sign up ?</string>
+    <string name="valider">Valider</string>
+    <string name="creerCompte">Créer un compte</string>
+    <string name="name">Nom :</string>
+    <string name="surname">Prénom :</string>
+    <string name="photoDeProfil">Photo de profil :</string>
 </resources>
