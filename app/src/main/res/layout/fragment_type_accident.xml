@@ -17,24 +17,6 @@
     </TableRow>
 
     <!-- Lignes de données pour le premier fragment -->
-    <TableRow>
-        <TextView
-            android:text="Donnée 1"
-            android:padding="10dp" />
-
-        <TextView
-            android:text="Donnée 2"
-            android:padding="10dp" />
-    </TableRow>
-
-    <TableRow>
-        <TextView
-            android:text="Donnée 3"
-            android:padding="10dp" />
-
-        <TextView
-            android:text="Donnée 4"
-            android:padding="10dp" />
-    </TableRow>
+    <!-- Les lignes de données seront ajoutées dynamiquement par le code -->
 
 </TableLayout>
