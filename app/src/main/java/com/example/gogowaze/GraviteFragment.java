@@ -16,16 +16,16 @@ import androidx.fragment.app.Fragment;
 import org.json.JSONException;
 
 import java.util.List;
-public class TypeAccidentFragment extends Fragment {
+public class GraviteFragment extends Fragment {
     private static final String ARG_ACCIDENT_DATA = "accidentData";
     private AccidentData accidentData;
 
-    public TypeAccidentFragment() {
+    public GraviteFragment() {
         // Constructeur public vide requis par Android
     }
 
-    public static TypeAccidentFragment newInstance(AccidentData accidentData) {
-        TypeAccidentFragment fragment = new TypeAccidentFragment();
+    public static GraviteFragment newInstance(AccidentData accidentData) {
+        GraviteFragment fragment = new GraviteFragment();
         Bundle args = new Bundle();
         args.putSerializable(ARG_ACCIDENT_DATA, accidentData);
         fragment.setArguments(args);
@@ -35,7 +35,7 @@ public class TypeAccidentFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Créer la vue du fragment à partir du layout XML
-        return inflater.inflate(R.layout.fragment_type_accident, container, false);
+        return inflater.inflate(R.layout.fragment_gravity, container, false);
     }
 
     @Override
@@ -64,7 +64,7 @@ public class TypeAccidentFragment extends Fragment {
         // Remplacez "city" par le nom de la ville pour laquelle vous souhaitez afficher les données
         tableLayout.removeAllViews();
         try {
-            List<Accident> accidents = accidentData.getTypeAccidentsListForCity(city);
+            List<Accident> accidents = accidentData.getGravityListForCity(city);
             Log.d("ici", "ICIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
             Log.d("yo", accidents.toString());
             // Parcourir la liste des accidents et ajouter les lignes au tableau
