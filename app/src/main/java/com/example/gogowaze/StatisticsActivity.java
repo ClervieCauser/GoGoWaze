@@ -22,7 +22,7 @@ public class StatisticsActivity extends AppCompatActivity implements OnDataLoade
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistique);
 
-        new DownloadJsonTask(this).execute("http://bluedays.com/data/web/donnees.json");
+        new DownloadJsonTask(this).execute("http://bluedays.com/data/web/donnees.json", "download");
     }
 
     @Override
