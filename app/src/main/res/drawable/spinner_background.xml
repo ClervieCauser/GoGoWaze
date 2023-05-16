@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Image de la flèche -->
+    <item
+        android:id="@+id/arrow"
+        android:drawable="@drawable/fleche"
+        android:gravity="end|center_vertical"
+        android:width="18dp"
+        android:height="20dp"
+        android:right="5dp"/>
+
+    <!-- Cadre noir -->
+    <item
+        android:id="@android:id/background">
+        <shape android:shape="rectangle">
+            <stroke
+                android:width="2dp"
+                android:color="@color/black" />
+        </shape>
+    </item>
+
+    <item
+        android:id="@+id/inner_background"
+        android:right="26dp">
+        <shape android:shape="rectangle">
+            <stroke
+                android:width="2dp"
+                android:color="@color/black" />
+        </shape>
+    </item>
+
+</layer-list>

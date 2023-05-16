@@ -2,29 +2,29 @@
 <resources>
 
     <string-array name="spinnerLanguage" >
-    <item>français</item>
-    <item>anglais</item>
-    <item>espagnol</item>
+    <item>Français</item>
+    <item>Anglais</item>
+    <item>Espagnol</item>
 
     </string-array>
     <string-array name="typeAccident" >
-    <item>voiture</item>
-    <item>camion</item>
-    <item>moto</item>
-    <item>piéton</item>
+    <item>Voiture</item>
+    <item>Camion</item>
+    <item>Moto</item>
+    <item>Piéton</item>
 
     </string-array>
 
     <string-array name="gravite" >
-    <item>faible</item>
-    <item>moyen</item>
-    <item>grave</item>
+    <item>Faible</item>
+    <item>Moyen</item>
+    <item>Grave</item>
     </string-array>
 
     <string-array name="perimetre" >
     <item>2km</item>
     <item>-10km</item>
-    <item>+10jm</item>
+    <item>+10km</item>
 </string-array>
 
 </resources>
