@@ -1,20 +1,24 @@
 package com.example.gogowaze;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.preference.PreferenceManager;
 
 import android.app.Dialog;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;
@@ -39,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Configuration.getInstance().load( getApplicationContext(),
+        Configuration.getInstance().load(getApplicationContext(),
                 PreferenceManager.getDefaultSharedPreferences(getApplicationContext()));
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -60,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
         //mise en place des fidget de la map
         ArrayList<OverlayItem> items = new ArrayList<>();
-        OverlayItem voiture = new OverlayItem("voiture", "faible", new GeoPoint(43.65020,7.00517));
+        OverlayItem voiture = new OverlayItem("voiture", "faible", new GeoPoint(43.65020, 7.00517));
         Drawable m = voiture.getMarker(0);
         items.add(voiture);
         items.add(new OverlayItem("moto", "moderer", new GeoPoint(43.64950, 7.00517)));
@@ -108,9 +112,9 @@ public class MainActivity extends AppCompatActivity {
             }
             return true;
         });
+        createAndShowNotification();
 
     }
-
 
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -129,5 +133,29 @@ public class MainActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         map.onResume();
+        createAndShowNotification();
+
     }
+
+    public void createAndShowNotification() {
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, ApplicationDemo.CHANNEL_ID)
+                .setSmallIcon(R.drawable.bell_icon)
+                .setContentTitle("My notification")
+                .setContentText("Hello World!")
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .setAutoCancel(true);
+        ;
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), PendingIntent.FLAG_IMMUTABLE);
+        builder.addAction(R.drawable.bell_icon, "Action", pendingIntent);
+
+
+        // Obtenez une instance de NotificationManager à partir d'ApplicationDemo
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+
+        int notificationId = 1;  // Ceci est juste un exemple, vous pouvez définir n'importe quel nombre unique
+
+        notificationManager.notify(notificationId, builder.build());
+    }
+
 }
