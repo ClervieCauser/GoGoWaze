@@ -29,4 +29,5 @@
     <string name="name">Nom :</string>
     <string name="surname">Prénom :</string>
     <string name="photoDeProfil">Photo de profil :</string>
+    <string name="signalerAccident">Signaler un accident</string>
 </resources>

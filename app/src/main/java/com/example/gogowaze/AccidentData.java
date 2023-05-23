@@ -53,6 +53,24 @@ public class AccidentData implements Serializable {
         return accidentList;
     }
 
+
+    public List<Accident> getGravityListForCity(String city) throws JSONException {
+        List<Accident> accidentList = new ArrayList<>();
+
+        JSONObject cityObject = mJsonObject.getJSONObject(city);
+        JSONObject typeAccidentsObject = cityObject.getJSONObject("gravite");
+        JSONArray names = typeAccidentsObject.names();
+
+        if (names != null) {
+            for (int i = 0; i < names.length(); i++) {
+                String type = names.getString(i);
+                int count = typeAccidentsObject.getInt(type);
+                accidentList.add(new Accident(type, count));
+            }
+        }
+
+        return accidentList;
+    }
    public String toString() {
         return mJsonObject.toString();
     }
