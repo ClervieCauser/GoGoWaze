@@ -5,6 +5,9 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/border"
+    android:paddingStart="10dp"
+    android:paddingBottom="10dp"
     tools:context=".DetailNotificationFragment">
 
     <TextView
@@ -25,35 +28,33 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
-        android:text="@string/x"
+        android:layout_marginEnd="16dp"
         android:backgroundTint="@color/white"
+        android:text="@string/x"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.714"
-        app:layout_constraintStart_toEndOf="@+id/textTitreSignalerAccident"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textGravity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="41dp"
-        android:textColor="@color/black"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
         android:text="@string/gravity"
-
-        app:layout_constraintHorizontal_bias="0.322"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/description" />
 
     <RadioGroup
         android:id="@+id/radioButtonGroupeGravity"
         android:layout_width="wrap_content"
         android:layout_height="72dp"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/description"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toEndOf="@id/textGravity"
+        app:layout_constraintTop_toBottomOf="@id/textDescription">
 
         <RadioButton
             android:id="@+id/radioButtonFaible"
@@ -89,17 +90,17 @@
         android:id="@+id/textType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="41dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="12dp"
         android:text="@string/type"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/radioButtonGroupeGravity" />
+        app:layout_constraintEnd_toStartOf="@+id/radioButtonGroupeType"
+        app:layout_constraintTop_toBottomOf="@id/textGravity" />
 
     <RadioGroup
         android:id="@+id/radioButtonGroupeType"
-        android:layout_width="wrap_content"
-        android:layout_height="72dp"
+        android:layout_width="361dp"
+        android:layout_height="66dp"
         android:layout_marginTop="16dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toEndOf="@+id/textType"
@@ -155,8 +156,8 @@
         android:id="@+id/titre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="52dp"
         android:text="Titre:"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
@@ -166,22 +167,22 @@
         android:id="@+id/textTitre"
         android:layout_width="274dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/border"
         android:padding="10dp"
         android:text="Accident de voiture"
         android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@+id/titre"
-        app:layout_constraintTop_toBottomOf="@id/textTitreSignalerAccident"
-        android:background="@drawable/border"/>
+        app:layout_constraintTop_toBottomOf="@id/textTitreSignalerAccident" />
 
     <TextView
         android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="50dp"
-        android:text="Descrition:"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
+        android:text="Description:"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titre" />
@@ -190,32 +191,33 @@
         android:id="@+id/textDescription"
         android:layout_width="274dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/border"
         android:padding="10dp"
         android:text="Une voiture sur le bors de la route"
         android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/titre"
         app:layout_constraintStart_toEndOf="@+id/description"
-        android:background="@drawable/border"
-        />
-
-  <Button
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:id="@+id/annulerSignalement"
-      android:text="Annuler"
-      android:layout_marginLeft="50dp"
-      app:layout_constraintTop_toBottomOf="@id/radioButtonGroupeType"
-      app:layout_constraintLeft_toLeftOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/textTitre" />
 
     <Button
+        android:id="@+id/annulerSignalement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="88dp"
+        android:layout_marginTop="16dp"
+        android:text="Annuler"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radioButtonGroupeType" />
+
+    <Button
         android:id="@+id/validateSignalement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="52dp"
+        android:layout_marginTop="16dp"
         android:text="Valider"
-        android:layout_marginLeft="50dp"
-        app:layout_constraintTop_toBottomOf="@id/radioButtonGroupeType"
-        app:layout_constraintLeft_toRightOf="@id/annulerSignalement"/>
+        app:layout_constraintLeft_toRightOf="@id/annulerSignalement"
+        app:layout_constraintTop_toBottomOf="@id/radioButtonGroupeType" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
