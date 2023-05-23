@@ -1,6 +1,7 @@
 package com.example.gogowaze;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -32,6 +33,12 @@ public class StatisticsActivity extends AppCompatActivity implements OnDataLoade
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistique);
+
+        findViewById(R.id.buttonExit).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                });
 
         new DownloadJsonTask(this).execute("http://bluedays.com/data/web/donnees.json");
 

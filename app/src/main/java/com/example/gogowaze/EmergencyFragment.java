@@ -13,6 +13,7 @@ import android.widget.Button;
 
 public class EmergencyFragment extends Fragment implements View.OnClickListener  {
     private Button mButton15;
+    private Button btnFermer;
 
     public EmergencyFragment() {
 
@@ -23,6 +24,16 @@ public class EmergencyFragment extends Fragment implements View.OnClickListener 
 
         mButton15 = view.findViewById(R.id.button_15);
         mButton15.setOnClickListener(this);
+
+        btnFermer = view.findViewById(R.id.close_button);
+        btnFermer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Fermez le fragment
+                getActivity().getSupportFragmentManager().beginTransaction().remove(EmergencyFragment.this).commit();
+            }
+        });
+
         return view;
     }
 

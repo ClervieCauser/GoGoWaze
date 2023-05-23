@@ -1,5 +1,7 @@
 package com.example.gogowaze;
 
+
+import android.annotation.SuppressLint;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -16,6 +18,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -30,10 +35,15 @@ public class ProfilPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil_page);
 
+        // Obtenez une référence à l'ImageView
         ImageView imageView = findViewById(R.id.imageView);
+
+        // Ajouter un OnClickListener à l'ImageView
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Ouvrir l'appareil photo
+                // Vérifier si l'application a l'autorisation d'utiliser l'appareil photo
                 if (ContextCompat.checkSelfPermission(ProfilPageActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(ProfilPageActivity.this, new String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA_PERMISSION);
                 } else {
@@ -41,6 +51,11 @@ public class ProfilPageActivity extends AppCompatActivity {
                 }
             }
         });
+        findViewById(R.id.buttonExit).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                });
     }
 
     private void openCamera() {
@@ -60,7 +75,7 @@ public class ProfilPageActivity extends AppCompatActivity {
                 if (imageBitmap != null) {
                     ImageView imageView = findViewById(R.id.imageView);
                     imageView.setImageBitmap(imageBitmap);
-                    saveImageToExternalStorage(imageBitmap);
+                    saveImageToInternalStorage(imageBitmap);
                 }
             }
         }
