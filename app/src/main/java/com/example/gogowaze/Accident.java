@@ -10,6 +10,7 @@ public class Accident implements Serializable {
         this.type = type;
         this.count = count;
     }
+    //Ceci est un test
 
     public String getType() {
         return type;
