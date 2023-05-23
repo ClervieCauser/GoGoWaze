@@ -14,6 +14,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;
@@ -107,7 +108,9 @@ public class MainActivity extends AppCompatActivity {
             }
             return true;
         });
+
     }
+
 
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();

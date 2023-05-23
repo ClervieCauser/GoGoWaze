@@ -2,6 +2,7 @@ package com.example.gogowaze;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,5 +18,11 @@ public class ConfigurationActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                 });
+        findViewById(R.id.buttonExit).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                });
+
     }
 }

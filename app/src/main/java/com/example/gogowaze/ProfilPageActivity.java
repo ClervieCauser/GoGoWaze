@@ -1,6 +1,7 @@
 package com.example.gogowaze;
 
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -27,6 +28,7 @@ import com.google.android.material.tabs.TabLayout;
 
 public class ProfilPageActivity extends AppCompatActivity {
     private static final int REQUEST_IMAGE_CAPTURE = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,8 +55,6 @@ public class ProfilPageActivity extends AppCompatActivity {
                // startActivityForResult(intent, 1);
             }
         });
-
-
 
 
         // Obtenez une référence au TabLayout et au ViewPager dans votre activité ou votre fragment
@@ -103,6 +103,12 @@ public class ProfilPageActivity extends AppCompatActivity {
 
         // Attacher le ViewPager au TabLayout
         tabLayout.setupWithViewPager(viewPager);
+
+        findViewById(R.id.buttonExit).setOnClickListener(
+                click -> {
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                });
     }
 
     // Gérer le résultat de la prise de photo
