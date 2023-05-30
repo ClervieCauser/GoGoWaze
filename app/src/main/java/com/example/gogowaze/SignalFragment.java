@@ -66,7 +66,7 @@ public class SignalFragment extends Fragment {
 
         Bitmap largeIcon = BitmapFactory.decodeResource(getResources(), R.drawable.bell_icon);
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this.getContext(), ApplicationDemo.CHANNEL_ID)
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this.getContext(), Notification.CHANNEL_ID)
                 .setSmallIcon(R.drawable.bell_icon)
                 .setContentTitle(titleText)
                 .setContentText(descriptionText)
