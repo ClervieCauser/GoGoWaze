@@ -112,8 +112,6 @@ public class MainActivity extends AppCompatActivity {
             }
             return true;
         });
-        createAndShowNotification();
-
     }
 
     private void replaceFragment(Fragment fragment) {
@@ -133,29 +131,5 @@ public class MainActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         map.onResume();
-        createAndShowNotification();
-
     }
-
-    public void createAndShowNotification() {
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, ApplicationDemo.CHANNEL_ID)
-                .setSmallIcon(R.drawable.bell_icon)
-                .setContentTitle("My notification")
-                .setContentText("Hello World!")
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-                .setAutoCancel(true);
-        ;
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), PendingIntent.FLAG_IMMUTABLE);
-        builder.addAction(R.drawable.bell_icon, "Action", pendingIntent);
-
-
-        // Obtenez une instance de NotificationManager à partir d'ApplicationDemo
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-
-        int notificationId = 1;  // Ceci est juste un exemple, vous pouvez définir n'importe quel nombre unique
-
-        notificationManager.notify(notificationId, builder.build());
-    }
-
 }
