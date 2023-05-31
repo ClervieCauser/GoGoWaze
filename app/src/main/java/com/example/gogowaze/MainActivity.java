@@ -1,7 +1,6 @@
 package com.example.gogowaze;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
@@ -12,13 +11,7 @@ import androidx.preference.PreferenceManager;
 import android.app.Dialog;
 import android.app.PendingIntent;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
 import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;
@@ -26,14 +19,10 @@ import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.CustomZoomButtonsDisplay;
 import org.osmdroid.views.MapView;
-import org.osmdroid.views.overlay.ItemizedIconOverlay;
-import org.osmdroid.views.overlay.ItemizedOverlayWithFocus;
 import org.osmdroid.views.overlay.Marker;
-import org.osmdroid.views.overlay.OverlayItem;
 
 import com.example.gogowaze.databinding.ActivityMainBinding;
-
-import java.util.ArrayList;
+import com.example.gogowaze.statistics.StatisticsActivity;
 
 public class MainActivity extends AppCompatActivity {
 

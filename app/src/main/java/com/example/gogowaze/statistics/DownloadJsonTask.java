@@ -1,8 +1,7 @@
-package com.example.gogowaze;
+package com.example.gogowaze.statistics;
 
 import android.os.AsyncTask;
 
-import com.example.gogowaze.AccidentData;
 import com.example.gogowaze.OnDataLoadedListener;
 
 import org.json.JSONException;

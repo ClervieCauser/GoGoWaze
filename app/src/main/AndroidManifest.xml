@@ -39,7 +39,7 @@
             android:exported="false"
             android:configChanges="orientation"/>
 
-        <activity android:name=".StatisticsActivity"
+        <activity android:name=".statistics.StatisticsActivity"
             android:exported="false"
             android:configChanges="orientation"/>
 
