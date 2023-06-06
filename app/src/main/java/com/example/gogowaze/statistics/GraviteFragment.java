@@ -53,11 +53,7 @@ public class GraviteFragment extends Fragment implements Accident.Observer {
         }
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        updateView("null");
-    }
+
 
     public void updateView(String city) {
 

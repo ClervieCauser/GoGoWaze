@@ -54,14 +54,6 @@ public class TypeAccidentFragment extends Fragment implements Accident.Observer 
 
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        if (currentCity != null) {
-            updateView(currentCity);
-        }
-    }
-
 
     public void updateView(String city) {
 
