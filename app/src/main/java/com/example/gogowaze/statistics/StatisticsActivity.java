@@ -77,7 +77,7 @@ public class StatisticsActivity extends AppCompatActivity implements OnDataLoade
     private void setupFragments() {
         AccidentController accidentController = new AccidentController(accidentData);
         typeAccidentFragment = TypeAccidentFragment.newInstance(accidentController);
-        graviteFragment = GraviteFragment.newInstance(accidentController);
+        graviteFragment = GraviteFragment.newInstance();
 
         adapter = new FragmentPagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
             @NonNull

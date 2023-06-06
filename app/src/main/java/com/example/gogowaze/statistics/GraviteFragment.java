@@ -20,10 +20,10 @@ import com.example.gogowaze.statistics.controller.AccidentController;
 import org.json.JSONException;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GraviteFragment extends Fragment implements Accident.Observer {
-    private AccidentController accidentController;
 
 
     private String currentCity = null;
@@ -32,9 +32,8 @@ public class GraviteFragment extends Fragment implements Accident.Observer {
         // Constructeur public vide requis par Android
     }
 
-    public static GraviteFragment newInstance(AccidentController accidentController) {
+    public static GraviteFragment newInstance() {
         GraviteFragment fragment = new GraviteFragment();
-        fragment.accidentController = accidentController;
         return fragment;
     }
 
@@ -62,18 +61,24 @@ public class GraviteFragment extends Fragment implements Accident.Observer {
             TableLayout tableLayout = getView().findViewById(R.id.table_layout);
 
             // Utiliser le contrôleur pour obtenir les données nécessaires
-            try {
-                List<Accident> accidents = accidentController.getGravityListForCity(city);
+            //List<Accident> accidents = accidentController.getGravityListForCity(city);
+            List<Accident> accidents = new ArrayList<>();
 
-                for (Accident accident : accidents) {
-                    accident.addObserver(this);
-                }
-                // Remplir le tableau avec les données obtenues
-                fillTableWithData(tableLayout, accidents);
-            } catch (JSONException e) {
-                e.printStackTrace();
-                // Gérer l'erreur ici, par exemple en affichant un message d'erreur à l'utilisateur
-            }
+            // Remplir le tableau avec les données obtenues
+            fillTableWithData(tableLayout, accidents);
+        }
+
+    }
+
+    @Override
+    public void onAccidentChanged(Accident accident) {
+        // Mettre à jour le modèle ou la vue en conséquence
+        Log.d("Accident", "Accident changed: " + accident.getType() + " " + accident.getCount());
+        if (getView() != null) {
+            TableLayout tableLayout = getView().findViewById(R.id.table_layout);
+            List<Accident> accidents = new ArrayList<>();
+
+            fillTableWithData(tableLayout, accidents);
         }
 
     }
@@ -107,18 +112,5 @@ public class GraviteFragment extends Fragment implements Accident.Observer {
         }
     }
 
-    @Override
-    public void onAccidentChanged(Accident accident) {
-        // Mettre à jour le modèle ou la vue en conséquence
-        Log.d("Accident", "Accident changed: " + accident.getType() + " " + accident.getCount());
-        if (getView() != null) {
-            TableLayout tableLayout = getView().findViewById(R.id.table_layout);
-            try {
-                fillTableWithData(tableLayout, accidentController.getGravityListForCity(currentCity));
-            } catch (JSONException e) {
-                throw new RuntimeException(e);
-            }
-        }
 
-    }
 }
