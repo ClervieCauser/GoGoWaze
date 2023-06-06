@@ -20,12 +20,14 @@ import com.example.gogowaze.statistics.controller.AccidentController;
 import org.json.JSONException;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 public class TypeAccidentFragment extends Fragment implements Accident.Observer  {
     private static final String ARG_ACCIDENT_DATA = "accidentData";
     private AccidentData accidentData;
 
-    private AccidentController accidentController;
 
     private String currentCity = null;
 
@@ -35,9 +37,8 @@ public class TypeAccidentFragment extends Fragment implements Accident.Observer 
         // Constructeur public vide requis par Android
     }
 
-    public static TypeAccidentFragment newInstance(AccidentController accidentController) {
+    public static TypeAccidentFragment newInstance() {
         TypeAccidentFragment fragment = new TypeAccidentFragment();
-        fragment.accidentController = accidentController;
         return fragment;
     }
 
@@ -55,24 +56,15 @@ public class TypeAccidentFragment extends Fragment implements Accident.Observer 
     }
 
 
-    public void updateView(String city) {
+    public void updateView(Map<String,Integer> typeAccident) {
 
-        currentCity = city;
         if (getView() != null) {
             TableLayout tableLayout = getView().findViewById(R.id.table_layout);
 
             // Utiliser le contrôleur pour obtenir les données nécessaires
-            try {
-                List<Accident> accidents = accidentController.getTypeAccidentsListForCity(city);
-                for (Accident accident : accidents) {
-                    accident.addObserver(this);
-                }
-                // Remplir le tableau avec les données obtenues
-                fillTableWithData(tableLayout, accidents);
-            } catch (JSONException e) {
-                e.printStackTrace();
-                // Gérer l'erreur ici, par exemple en affichant un message d'erreur à l'utilisateur
-            }
+            List<Accident> accidents = new ArrayList<>();
+
+            fillTableWithData(tableLayout, typeAccident);
         }
 
     }
@@ -81,24 +73,26 @@ public class TypeAccidentFragment extends Fragment implements Accident.Observer 
 
 
 
-    public void fillTableWithData(TableLayout tableLayout, List<Accident> accidents) {
-        // Remplacez "city" par le nom de la ville pour laquelle vous souhaitez afficher les données
+
+    public void fillTableWithData(TableLayout tableLayout, Map<String, Integer> typeAccident) {
+        // Effacer toutes les vues existantes du tableau
         tableLayout.removeAllViews();
-        // Parcourir la liste des accidents et ajouter les lignes au tableau
-        for (Accident accident : accidents) {
+
+        // Parcourir la map et ajouter les lignes au tableau
+        for (Map.Entry<String, Integer> entry : typeAccident.entrySet()) {
             // Créer une nouvelle TableRow
             TableRow tableRow = new TableRow(getContext());
             tableRow.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
 
             // Créer un TextView pour le type d'accident
             TextView typeAccidentTextView = new TextView(getContext());
-            typeAccidentTextView.setText(accident.getType());
+            typeAccidentTextView.setText(entry.getKey()); // utiliser la clé de la map comme type d'accident
             typeAccidentTextView.setPadding(10, 10, 10, 10);
             tableRow.addView(typeAccidentTextView);
 
             // Créer un TextView pour le nombre d'accidents
             TextView countAccidentTextView = new TextView(getContext());
-            countAccidentTextView.setText(String.valueOf(accident.getCount()));
+            countAccidentTextView.setText(String.valueOf(entry.getValue())); // utiliser la valeur de la map comme compte d'accident
             countAccidentTextView.setPadding(10, 10, 10, 10);
             tableRow.addView(countAccidentTextView);
 
@@ -107,16 +101,9 @@ public class TypeAccidentFragment extends Fragment implements Accident.Observer 
         }
     }
 
+
     @Override
     public void onAccidentChanged(Accident accident) {
-        if (getView() != null) {
-            TableLayout tableLayout = getView().findViewById(R.id.table_layout);
-            try {
-                fillTableWithData(tableLayout, accidentController.getGravityListForCity(currentCity));
-            } catch (JSONException e) {
-                throw new RuntimeException(e);
-            }
-        }
 
     }
 }

@@ -22,6 +22,7 @@ import org.json.JSONException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class GraviteFragment extends Fragment implements Accident.Observer {
 
@@ -47,63 +48,51 @@ public class GraviteFragment extends Fragment implements Accident.Observer {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if (currentCity != null) {
-            updateView(currentCity);
-        }
+
     }
 
 
 
-    public void updateView(String city) {
+    public void updateView(Map<String,Integer> typeAccident) {
 
-        currentCity = city;
         if (getView() != null) {
             TableLayout tableLayout = getView().findViewById(R.id.table_layout);
 
             // Utiliser le contrôleur pour obtenir les données nécessaires
-            //List<Accident> accidents = accidentController.getGravityListForCity(city);
             List<Accident> accidents = new ArrayList<>();
 
-            // Remplir le tableau avec les données obtenues
-            fillTableWithData(tableLayout, accidents);
+            fillTableWithData(tableLayout, typeAccident);
         }
 
     }
 
     @Override
     public void onAccidentChanged(Accident accident) {
-        // Mettre à jour le modèle ou la vue en conséquence
-        Log.d("Accident", "Accident changed: " + accident.getType() + " " + accident.getCount());
-        if (getView() != null) {
-            TableLayout tableLayout = getView().findViewById(R.id.table_layout);
-            List<Accident> accidents = new ArrayList<>();
 
-            fillTableWithData(tableLayout, accidents);
-        }
 
     }
 
 
 
 
-    public void fillTableWithData(TableLayout tableLayout, List<Accident> accidents) {
+    public void fillTableWithData(TableLayout tableLayout, Map<String,Integer> typeAccident) {
         // Remplacez "city" par le nom de la ville pour laquelle vous souhaitez afficher les données
         tableLayout.removeAllViews();
         // Parcourir la liste des accidents et ajouter les lignes au tableau
-        for (Accident accident : accidents) {
+        for (Map.Entry<String, Integer> entry : typeAccident.entrySet()) {
             // Créer une nouvelle TableRow
             TableRow tableRow = new TableRow(getContext());
             tableRow.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
 
             // Créer un TextView pour le type d'accident
             TextView typeAccidentTextView = new TextView(getContext());
-            typeAccidentTextView.setText(accident.getType());
+            typeAccidentTextView.setText(entry.getKey());
             typeAccidentTextView.setPadding(10, 10, 10, 10);
             tableRow.addView(typeAccidentTextView);
 
             // Créer un TextView pour le nombre d'accidents
             TextView countAccidentTextView = new TextView(getContext());
-            countAccidentTextView.setText(String.valueOf(accident.getCount()));
+            countAccidentTextView.setText(String.valueOf(entry.getValue()));
             countAccidentTextView.setPadding(10, 10, 10, 10);
             tableRow.addView(countAccidentTextView);
 

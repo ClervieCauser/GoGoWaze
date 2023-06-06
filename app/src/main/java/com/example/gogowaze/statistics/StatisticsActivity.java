@@ -19,8 +19,13 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.gogowaze.MainActivity;
 import com.example.gogowaze.OnDataLoadedListener;
 import com.example.gogowaze.R;
+import com.example.gogowaze.model.VilleInterface;
+import com.example.gogowaze.model.VilleSimpleFactory;
 import com.example.gogowaze.statistics.controller.AccidentController;
 import com.google.android.material.tabs.TabLayout;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class StatisticsActivity extends AppCompatActivity implements OnDataLoadedListener {
     private AccidentData accidentData;
@@ -49,15 +54,35 @@ public class StatisticsActivity extends AppCompatActivity implements OnDataLoade
             Log.d("ici", city);
 
             if (typeAccidentFragment != null && graviteFragment != null) {
-                // Mettre à jour les vues des fragments
-                typeAccidentFragment.updateView(city);
-                graviteFragment.updateView(city);
+
+                //création Factory en fonction de la ville
+                try {
+                    JSONObject accidentToConvert = getCityFromData(city);
+                    Log.d("ici", "YOOOOOOOOOOOOOOOOOOOO "+accidentToConvert.toString());
+                    VilleInterface villeSimpleFactory = VilleSimpleFactory.createVille(accidentToConvert, city);
+                    // Mettre à jour les vues des fragments
+                    typeAccidentFragment.updateView(villeSimpleFactory.getTypeAccident());
+                    graviteFragment.updateView(villeSimpleFactory.getGravite());
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+
+
+
+
             }
+
+
 
             // Fermer le clavier
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(searchEditText.getWindowToken(), 0);
         });
+
+    }
+
+    private JSONObject getCityFromData(String city) throws JSONException {
+        return (JSONObject) this.accidentData.getJson().get(city);
     }
 
     @Override
@@ -65,18 +90,30 @@ public class StatisticsActivity extends AppCompatActivity implements OnDataLoade
         this.accidentData = accidentData;
         setupFragments();
 
+
         ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(adapter);
 
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager);
 
+        Log.d("ici", "onDataLoaded");
+
         validerButton.setEnabled(true);
     }
 
     private void setupFragments() {
-        AccidentController accidentController = new AccidentController(accidentData);
-        typeAccidentFragment = TypeAccidentFragment.newInstance(accidentController);
+
+        Log.d("ici", "setupFragments");
+        Log.d("ici", accidentData.toString());
+
+        //on créé villeSimpleFactory ici
+        //to do
+
+
+        //on mettra villeSimpleFactory.getGravite en paramètre pour crée le fragment
+        typeAccidentFragment = TypeAccidentFragment.newInstance();
+        //on mettra villeSimpleFactory.getTypeAccident en paramètre pour créé le framgnet
         graviteFragment = GraviteFragment.newInstance();
 
         adapter = new FragmentPagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {

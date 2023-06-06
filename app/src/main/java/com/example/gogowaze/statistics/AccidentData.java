@@ -74,4 +74,8 @@ public class AccidentData implements Serializable {
    public String toString() {
         return mJsonObject.toString();
     }
+
+    public JSONObject getJson() {
+        return this.mJsonObject;
+    }
 }
