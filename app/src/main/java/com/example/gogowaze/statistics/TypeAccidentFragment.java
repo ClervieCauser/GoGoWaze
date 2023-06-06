@@ -15,7 +15,6 @@ import androidx.fragment.app.Fragment;
 
 import com.example.gogowaze.model.Accident;
 import com.example.gogowaze.R;
-import com.example.gogowaze.statistics.controller.AccidentController;
 
 import org.json.JSONException;
 

@@ -47,6 +47,11 @@
             android:exported="false"
             android:configChanges="orientation"/>
 
+        <activity android:name=".statistics.creerStat.CreerStatistiqueActivity"
+            android:exported="false"
+            android:configChanges="orientation"/>
+
+
     </application>
 
 </manifest>

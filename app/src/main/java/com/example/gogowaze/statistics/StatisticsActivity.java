@@ -21,7 +21,7 @@ import com.example.gogowaze.OnDataLoadedListener;
 import com.example.gogowaze.R;
 import com.example.gogowaze.model.VilleInterface;
 import com.example.gogowaze.model.VilleSimpleFactory;
-import com.example.gogowaze.statistics.controller.AccidentController;
+import com.example.gogowaze.statistics.creerStat.CreerStatistiqueActivity;
 import com.google.android.material.tabs.TabLayout;
 
 import org.json.JSONException;
@@ -66,19 +66,20 @@ public class StatisticsActivity extends AppCompatActivity implements OnDataLoade
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
                 }
-
-
-
-
             }
-
-
-
             // Fermer le clavier
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(searchEditText.getWindowToken(), 0);
         });
 
+        Button buttonGo = findViewById(R.id.buttonGo);
+        buttonGo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StatisticsActivity.this, CreerStatistiqueActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private JSONObject getCityFromData(String city) throws JSONException {
