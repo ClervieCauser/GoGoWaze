@@ -1,19 +1,17 @@
 package com.example.gogowaze;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.preference.PreferenceManager;
 
 import android.app.Dialog;
+import android.app.PendingIntent;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
 import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;
@@ -21,13 +19,10 @@ import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.CustomZoomButtonsDisplay;
 import org.osmdroid.views.MapView;
-import org.osmdroid.views.overlay.ItemizedIconOverlay;
-import org.osmdroid.views.overlay.ItemizedOverlayWithFocus;
-import org.osmdroid.views.overlay.OverlayItem;
+import org.osmdroid.views.overlay.Marker;
 
 import com.example.gogowaze.databinding.ActivityMainBinding;
-
-import java.util.ArrayList;
+import com.example.gogowaze.statistics.StatisticsActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Configuration.getInstance().load( getApplicationContext(),
+        Configuration.getInstance().load(getApplicationContext(),
                 PreferenceManager.getDefaultSharedPreferences(getApplicationContext()));
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -57,27 +52,21 @@ public class MainActivity extends AppCompatActivity {
         mapControler.setZoom(18.0);
         mapControler.setCenter(startPoint);
 
-        //mise en place des fidget de la map
-        ArrayList<OverlayItem> items = new ArrayList<>();
-        OverlayItem voiture = new OverlayItem("voiture", "faible", new GeoPoint(43.65020,7.00517));
-        Drawable m = voiture.getMarker(0);
-        items.add(voiture);
-        items.add(new OverlayItem("moto", "moderer", new GeoPoint(43.64950, 7.00517)));
+        Marker marker = new Marker(map);
+        marker.setPosition(new GeoPoint(43.65020,7.00517));
+        marker.setTitle("voiture");
+        marker.setSnippet("faible");
+        marker.setIcon(getResources().getDrawable(R.drawable.accidentfaible));
 
-        ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(getApplicationContext(),
-                items, new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
-            @Override
-            public boolean onItemSingleTapUp(int index, OverlayItem item) {
-                return true;
-            }
+        Marker marker2 = new Marker(map);
+        marker2.setPosition(new GeoPoint(43.64950, 7.00517));
+        marker2.setTitle("moto");
+        marker2.setSnippet("moderee");
+        marker2.setIcon(getResources().getDrawable(R.drawable.accidentmoderee));
 
-            @Override
-            public boolean onItemLongPress(int index, OverlayItem item) {
-                return false;
-            }
-        });
-        mOverlay.setFocusItemsOnTap(true);
-        map.getOverlays().add(mOverlay);
+        map.getOverlays().add(marker);
+        map.getOverlays().add(marker2);
+
 
         //Rajouter ici le fragment par défaut
 
@@ -126,5 +115,21 @@ public class MainActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         map.onResume();
+    }
+
+
+    private void changeDisplay(String type, String gravite, double latitude, double longitude) {
+        Marker marker = new Marker(map);
+        marker.setPosition(new GeoPoint(latitude,longitude));
+        marker.setTitle(type);
+        marker.setSnippet(gravite);
+        switch (gravite) {
+            case "faible":
+                marker.setIcon(getResources().getDrawable(R.drawable.accidentfaible));
+            case "moderee":
+                marker.setIcon(getResources().getDrawable(R.drawable.accidentmoderee));
+            case "elevee":
+                marker.setIcon(getResources().getDrawable(R.drawable.accidentelevee));
+        }
     }
 }

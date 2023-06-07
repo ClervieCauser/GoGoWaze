@@ -1,6 +1,6 @@
-package com.example.gogowaze;
+package com.example.gogowaze.statistics;
 
-import androidx.annotation.NonNull;
+import com.example.gogowaze.model.Accident;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -73,5 +73,9 @@ public class AccidentData implements Serializable {
     }
    public String toString() {
         return mJsonObject.toString();
+    }
+
+    public JSONObject getJson() {
+        return this.mJsonObject;
     }
 }

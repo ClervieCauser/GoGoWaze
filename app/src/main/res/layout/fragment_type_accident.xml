@@ -6,12 +6,12 @@
     <!-- En-têtes de colonne pour le premier fragment -->
     <TableRow>
         <TextView
-            android:text="Colonne 1"
+            android:text=""
             android:textStyle="bold"
             android:padding="10dp" />
 
         <TextView
-            android:text="Colonne 2"
+            android:text=""
             android:textStyle="bold"
             android:padding="10dp" />
     </TableRow>

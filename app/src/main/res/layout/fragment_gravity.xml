@@ -6,12 +6,12 @@
     <!-- En-têtes de colonne pour le deuxième fragment -->
     <TableRow>
         <TextView
-            android:text="Colonne 1"
+            android:text=""
             android:textStyle="bold"
             android:padding="10dp" />
 
         <TextView
-            android:text="Colonne 2"
+            android:text=""
             android:textStyle="bold"
             android:padding="10dp" />
     </TableRow>
@@ -19,21 +19,21 @@
     <!-- Lignes de données pour le deuxième fragment -->
     <TableRow>
         <TextView
-            android:text="Donnée 5"
+            android:text=""
             android:padding="10dp" />
 
         <TextView
-            android:text="Donnée 6"
+            android:text=""
             android:padding="10dp" />
     </TableRow>
 
     <TableRow>
         <TextView
-            android:text="Donnée 7"
+            android:text=""
             android:padding="10dp" />
 
         <TextView
-            android:text="Donnée 8"
+            android:text=""
             android:padding="10dp" />
     </TableRow>
 

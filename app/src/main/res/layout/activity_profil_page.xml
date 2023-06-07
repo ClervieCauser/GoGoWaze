@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:ignore="Deprecated">
 
 
     <ImageView
@@ -14,6 +15,16 @@
         android:layout_y="20dp"
         android:background="@drawable/border"
         android:src="@drawable/person" />
+
+    <Button
+        android:id="@+id/buttonExit"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_x="346dp"
+        android:layout_y="12dp"
+        android:backgroundTint="@color/white"
+        android:text="@string/x"
+        android:textColor="@color/black" />
 
     <TextView
         android:id="@+id/textView3"

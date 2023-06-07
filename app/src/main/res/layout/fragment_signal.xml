@@ -39,10 +39,11 @@
         android:id="@+id/textGravity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="52dp"
         android:text="@string/gravity"
         android:textColor="@color/black"
+        app:layout_constraintRight_toLeftOf="@id/radioButtonGroupeGravity"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/description" />
 
@@ -85,6 +86,17 @@
             app:layout_constraintStart_toEndOf="@+id/radioButtonModeree"
             app:layout_constraintTop_toTopOf="parent" />
     </RadioGroup>
+
+    <Button
+        android:id="@+id/buttonCapture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Prendre Photo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/annulerSignalement" />
+
 
     <TextView
         android:id="@+id/textType"
@@ -161,9 +173,10 @@
         android:text="Titre:"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textTitreSignalerAccident" />
+        app:layout_constraintTop_toBottomOf="@id/textTitreSignalerAccident"
+        app:layout_constraintRight_toLeftOf="@id/textTitre" />
 
-    <TextView
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/textTitre"
         android:layout_width="274dp"
         android:layout_height="wrap_content"
@@ -171,7 +184,7 @@
         android:layout_marginTop="40dp"
         android:background="@drawable/border"
         android:padding="10dp"
-        android:text="Accident de voiture"
+        android:hint="Accident de voiture"
         android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@+id/titre"
         app:layout_constraintTop_toBottomOf="@id/textTitreSignalerAccident" />
@@ -185,9 +198,10 @@
         android:text="Description:"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titre" />
+        app:layout_constraintTop_toBottomOf="@id/titre"
+        app:layout_constraintRight_toLeftOf="@id/textDescription"/>
 
-    <TextView
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/textDescription"
         android:layout_width="274dp"
         android:layout_height="wrap_content"
@@ -195,7 +209,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/border"
         android:padding="10dp"
-        android:text="Une voiture sur le bors de la route"
+        android:hint="Une voiture au bord de la route"
         android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@+id/description"
         app:layout_constraintTop_toBottomOf="@id/textTitre" />
@@ -204,7 +218,7 @@
         android:id="@+id/annulerSignalement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="88dp"
+        android:layout_marginLeft="72dp"
         android:layout_marginTop="16dp"
         android:text="Annuler"
         app:layout_constraintLeft_toLeftOf="parent"
