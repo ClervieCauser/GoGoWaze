@@ -97,15 +97,21 @@ public class SignalFragment extends Fragment {
 
     public void createAndShowNotification() {
         int selectedGravityId = radioGroupGravity.getCheckedRadioButtonId();
-        RadioButton selectedGravity = getView().findViewById(selectedGravityId);
-        String selectedGravityText = selectedGravity.getText().toString();
+        RadioButton selectedGravity = selectedGravityId != -1 ? getView().findViewById(selectedGravityId) : null;
+        String selectedGravityText = selectedGravity != null ? selectedGravity.getText().toString() : "";
 
         int selectedTypeId = radioGroupType.getCheckedRadioButtonId();
-        RadioButton selectedType = getView().findViewById(selectedTypeId);
-        String selectedTypeText = selectedType.getText().toString();
+        RadioButton selectedType = selectedTypeId != -1 ? getView().findViewById(selectedTypeId) : null;
+        String selectedTypeText = selectedType != null ? selectedType.getText().toString() : "";
 
         String titleText = textTitle.getText().toString();
         String descriptionText = textDescription.getText().toString();
+
+        // vérifiez si les champs sont remplis
+        if (titleText.isEmpty() || descriptionText.isEmpty() || selectedGravity == null || selectedType == null) {
+            // Vous pouvez afficher un message à l'utilisateur ici pour le notifier que les champs sont vides.
+            return;
+        }
 
         Bitmap largeIcon = capturedImage != null ? capturedImage : BitmapFactory.decodeResource(getResources(), R.drawable.bell_icon);
 
@@ -124,7 +130,7 @@ public class SignalFragment extends Fragment {
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this.getContext());
 
-        int notificationId = 1;  // This is just an example, you can set any unique number
+        int notificationId = 1;
 
         notificationManager.notify(notificationId, builder.build());
     }
