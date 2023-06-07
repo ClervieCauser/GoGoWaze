@@ -1,4 +1,4 @@
-package com.example.gogowaze;
+package com.example.gogowaze.signalisation;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -10,11 +10,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -27,7 +26,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.gogowaze.MainActivity;
+import com.example.gogowaze.Notification;
+import com.example.gogowaze.R;
 import com.google.android.material.textfield.TextInputEditText;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 
 public class SignalFragment extends Fragment {
 
@@ -73,6 +80,57 @@ public class SignalFragment extends Fragment {
                     openCamera();
                 }
             }
+        });
+
+        btnValider.setOnClickListener(v -> {
+            // Récupérer les informations du formulaire
+            String selectedGravityText = "";
+            String selectedTypeText = "";
+            int selectedGravityId = radioGroupGravity.getCheckedRadioButtonId();
+            if (selectedGravityId != -1) {
+                RadioButton selectedGravity = getView().findViewById(selectedGravityId);
+                selectedGravityText = selectedGravity.getText().toString();
+            }
+            int selectedTypeId = radioGroupType.getCheckedRadioButtonId();
+            if (selectedTypeId != -1) {
+                RadioButton selectedType = getView().findViewById(selectedTypeId);
+                selectedTypeText = selectedType.getText().toString();
+            }
+            String titleText = textTitle.getText().toString();
+            String descriptionText = textDescription.getText().toString();
+
+            // Créer un objet JSON avec les informations
+            JSONObject json = new JSONObject();
+
+
+            try {
+                json.put("Titre", titleText);
+                json.put("Description", descriptionText);
+                json.put("Gravite", selectedGravityText);
+                json.put("Type", selectedTypeText);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            Log.d("la", json.toString());
+
+            // Convertir l'objet JSON en chaîne
+            String jsonData = json.toString();
+
+            // URL de destination pour l'ajout des informations
+            String url = "https://api.npoint.io/1c50b491f4a4245b0715";
+
+            // Créer une instance de la tâche asynchrone et l'exécuter
+            DownloadJsonTaskSignal task = new DownloadJsonTaskSignal(new OnDataLoadedListenerSignal() {
+                @Override
+                public void onDataLoaded(SignalData result) {
+
+                }
+            });
+
+            task.execute(url, "update", jsonData);
+
+            createAndShowNotification();
+            getActivity().getSupportFragmentManager().beginTransaction().remove(SignalFragment.this).commit();
         });
         return view;
     }
