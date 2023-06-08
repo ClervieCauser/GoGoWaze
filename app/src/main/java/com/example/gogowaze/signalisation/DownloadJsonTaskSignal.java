@@ -78,7 +78,7 @@ public class DownloadJsonTaskSignal extends AsyncTask<String, Void, SignalData> 
             return null;
         }
     }
-    
+
 
     private SignalData updateUrl(String url, String data) throws IOException {
         HttpURLConnection conn = null;

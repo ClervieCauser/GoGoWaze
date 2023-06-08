@@ -1,5 +1,8 @@
 package com.example.gogowaze;
 
+import static com.example.gogowaze.Application.DESCRIPTION;
+import static com.example.gogowaze.Application.TITRE;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -9,6 +12,7 @@ import androidx.preference.PreferenceManager;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;
@@ -22,7 +26,7 @@ import com.example.gogowaze.databinding.ActivityMainBinding;
 import com.example.gogowaze.signalisation.SignalFragment;
 import com.example.gogowaze.statistics.StatisticsActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SignalFragment.DataListener{
 
     private MapView map;
     ActivityMainBinding binding;
@@ -50,11 +54,8 @@ public class MainActivity extends AppCompatActivity {
         mapControler.setZoom(18.0);
         mapControler.setCenter(startPoint);
 
-        Marker marker = new Marker(map);
-        marker.setPosition(new GeoPoint(43.65020,7.00517));
-        marker.setTitle("voiture");
-        marker.setSnippet("faible");
-        marker.setIcon(getResources().getDrawable(R.drawable.accidentfaible));
+        changeDisplay("voiture", "elevee",43.65020, 7.00517 );
+
 
         Marker marker2 = new Marker(map);
         marker2.setPosition(new GeoPoint(43.64950, 7.00517));
@@ -62,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
         marker2.setSnippet("moderee");
         marker2.setIcon(getResources().getDrawable(R.drawable.accidentmoderee));
 
-        map.getOverlays().add(marker);
         map.getOverlays().add(marker2);
 
 
@@ -80,7 +80,9 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent2);
                     break;
                 case R.id.warning:
-                    replaceFragment(new SignalFragment());
+                    SignalFragment signalFragment = new SignalFragment();
+                    signalFragment.setDataListener(this);
+                    replaceFragment(signalFragment);
                     break;
                 case R.id.profile:
                     replaceFragment(new ProfileFragment());
@@ -128,5 +130,25 @@ public class MainActivity extends AppCompatActivity {
             case "elevee":
                 marker.setIcon(getResources().getDrawable(R.drawable.accidentelevee));
         }
+        map.getOverlays().add(marker);
+    }
+
+    @Override
+    public void onDataReceived(String title, String description) {
+        Marker marker = new Marker(map);
+        marker.setPosition(new GeoPoint(43.64950,7.00517));
+        marker.setTitle(title);
+        marker.setSnippet(description);
+        Log.d("", description);
+        if (description == "Faible") {
+            marker.setIcon(getResources().getDrawable(R.drawable.accidentfaible));
+        }
+        else if (description == "Modérée") {
+            marker.setIcon(getResources().getDrawable(R.drawable.accidentmoderee));
+        }
+        else{
+            marker.setIcon(getResources().getDrawable(R.drawable.accidentelevee));
+        }
+        map.getOverlays().add(marker);
     }
 }

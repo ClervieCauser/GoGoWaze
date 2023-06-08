@@ -2,6 +2,9 @@ package com.example.gogowaze.signalisation;
 
 import static android.app.Activity.RESULT_OK;
 
+import static com.example.gogowaze.Application.DESCRIPTION;
+import static com.example.gogowaze.Application.TITRE;
+
 import android.Manifest;
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -50,6 +53,12 @@ public class SignalFragment extends Fragment {
     private TextInputEditText textDescription;
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int REQUEST_CAMERA_PERMISSION = 2;
+
+    public interface DataListener {
+        void onDataReceived(String title, String description);
+    }
+
+    private DataListener dataListener;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_signal, container, false);
@@ -130,9 +139,18 @@ public class SignalFragment extends Fragment {
             task.execute(url, "update", jsonData);
 
             createAndShowNotification();
+
+            if (dataListener != null) {
+                dataListener.onDataReceived(selectedTypeText, selectedGravityText);
+            }
             getActivity().getSupportFragmentManager().beginTransaction().remove(SignalFragment.this).commit();
         });
         return view;
+    }
+
+    // Méthode pour définir le DataListener
+    public void setDataListener(DataListener listener) {
+        this.dataListener = listener;
     }
 
     private void openCamera() {
