@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/border"
+    android:paddingBottom="20dp"
+    tools:context=".DetailNotificationFragment">
+
+    <TextView
+        android:id="@+id/textTitreSignalerAccident"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/black"
+        android:text="@string/signalerAccident"
+        android:textSize="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonExit"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="40dp"
+        android:backgroundTint="@color/white"
+        android:text="@string/x"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:scaleX="2"
+        android:scaleY="2"/>
+
+    <TextView
+        android:id="@+id/titre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Titre:"
+        android:textSize="35dp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textTitreSignalerAccident"
+        app:layout_constraintEnd_toStartOf="@id/textTitre" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/textTitre"
+        android:layout_width="274dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="60dp"
+        android:background="@drawable/border"
+        android:padding="10dp"
+        android:hint="Accident de voiture"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/titre"
+        app:layout_constraintEnd_toStartOf="@id/description"
+        app:layout_constraintTop_toBottomOf="@id/textTitreSignalerAccident"
+        android:scaleX="1.3"
+        android:scaleY="1.3"/>
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="60dp"
+        android:text="Description:"
+        android:textSize="35dp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@id/textTitre"
+        app:layout_constraintTop_toBottomOf="@id/textTitreSignalerAccident"
+        app:layout_constraintEnd_toStartOf="@id/textDescription"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/textDescription"
+        android:layout_width="274dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/border"
+        android:padding="10dp"
+        android:hint="Une voiture au bord de la route"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textTitreSignalerAccident"
+        android:scaleX="1.3"
+        android:scaleY="1.3"/>
+
+
+    <TextView
+        android:id="@+id/textGravity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="40dp"
+        android:text="@string/gravity"
+        android:textSize="35dp"
+        android:textColor="@color/black"
+        app:layout_constraintRight_toLeftOf="@id/radioButtonGroupeGravity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titre" />
+
+    <RadioGroup
+        android:id="@+id/radioButtonGroupeGravity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:layout_marginStart="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toEndOf="@id/textGravity"
+        app:layout_constraintTop_toBottomOf="@id/textDescription">
+
+        <RadioButton
+            android:id="@+id/radioButtonFaible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/faible"
+            app:layout_constraintStart_toStartOf="@+id/radioButtonGroupeGravity"
+            app:layout_constraintTop_toTopOf="parent"
+            android:scaleX="1.5"
+            android:scaleY="1.5"/>
+
+        <RadioButton
+            android:id="@+id/radioButtonModeree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/moderee"
+            app:layout_constraintStart_toEndOf="@+id/radioButtonFaible"
+            app:layout_constraintTop_toTopOf="parent"
+            android:scaleX="1.5"
+            android:scaleY="1.5"/>
+
+        <RadioButton
+            android:id="@+id/radioButtonElevee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/elevee"
+            app:layout_constraintStart_toEndOf="@+id/radioButtonModeree"
+            app:layout_constraintTop_toTopOf="parent"
+            android:scaleX="1.5"
+            android:scaleY="1.5"/>
+    </RadioGroup>
+
+
+    <TextView
+        android:id="@+id/textType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="70dp"
+        android:text="@string/type"
+        android:textSize="35dp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/radioButtonGroupeGravity"
+        app:layout_constraintTop_toBottomOf="@id/description" />
+
+    <RadioGroup
+        android:id="@+id/radioButtonGroupeType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toEndOf="@+id/textType"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/description">
+
+        <RadioButton
+            android:id="@+id/radioButtonVoiture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/voiture"
+            app:layout_constraintStart_toStartOf="@+id/radioButtonGroupeType"
+            app:layout_constraintTop_toTopOf="parent"
+            android:scaleX="1.5"
+            android:scaleY="1.5"/>
+
+        <RadioButton
+            android:id="@+id/radioButtonMoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/moto"
+            app:layout_constraintStart_toEndOf="@+id/radioButtonVoiture"
+            app:layout_constraintTop_toTopOf="parent"
+            android:scaleX="1.5"
+            android:scaleY="1.5"/>
+
+        <RadioButton
+            android:id="@+id/radioButtonCamion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/camion"
+            app:layout_constraintStart_toEndOf="@+id/radioButtonMoto"
+            app:layout_constraintTop_toTopOf="parent"
+            android:scaleX="1.5"
+            android:scaleY="1.5"/>
+
+        <RadioButton
+            android:id="@+id/radioButtonVelo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/velo"
+            app:layout_constraintStart_toEndOf="@+id/radioButtonCamion"
+            app:layout_constraintTop_toTopOf="parent"
+            android:scaleX="1.5"
+            android:scaleY="1.5"/>
+
+        <RadioButton
+            android:id="@+id/radioButtonPieton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/pieton"
+            app:layout_constraintStart_toEndOf="@+id/radioButtonVelo"
+            app:layout_constraintTop_toTopOf="parent"
+            android:scaleX="1.5"
+            android:scaleY="1.5"/>
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/annulerSignalement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="50dp"
+        android:text="Annuler"
+        app:layout_constraintTop_toBottomOf="@id/radioButtonGroupeGravity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/validateSignalement"
+        android:scaleX="1.5"
+        android:scaleY="1.5"/>
+
+    <Button
+        android:id="@+id/validateSignalement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="80dp"
+        android:layout_marginTop="50dp"
+        android:text="Valider"
+        app:layout_constraintTop_toBottomOf="@id/radioButtonGroupeGravity"
+        app:layout_constraintStart_toEndOf="@id/annulerSignalement"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:scaleX="1.5"
+        android:scaleY="1.5"/>
+
+    <Button
+        android:id="@+id/buttonCapture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Prendre Photo"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/annulerSignalement"
+        android:scaleX="1.5"
+        android:scaleY="1.5"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

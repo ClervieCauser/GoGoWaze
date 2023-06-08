@@ -28,7 +28,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class StatisticsActivity extends AppCompatActivity implements OnDataLoadedListener {
-    private AccidentData accidentData;
+    private JSONObject accidentData;
     private FragmentPagerAdapter adapter;
     private TypeAccidentFragment typeAccidentFragment;
     private GraviteFragment graviteFragment;
@@ -56,16 +56,16 @@ public class StatisticsActivity extends AppCompatActivity implements OnDataLoade
             if (typeAccidentFragment != null && graviteFragment != null) {
 
                 //création Factory en fonction de la ville
+
+                VilleInterface villeSimpleFactory = null;
                 try {
-                    JSONObject accidentToConvert = getCityFromData(city);
-                    Log.d("ici", "YOOOOOOOOOOOOOOOOOOOO "+accidentToConvert.toString());
-                    VilleInterface villeSimpleFactory = VilleSimpleFactory.createVille(accidentToConvert, city);
-                    // Mettre à jour les vues des fragments
-                    typeAccidentFragment.updateView(villeSimpleFactory.getTypeAccident());
-                    graviteFragment.updateView(villeSimpleFactory.getGravite());
+                    villeSimpleFactory = VilleSimpleFactory.createVille((JSONObject) this.accidentData.get(city), city);
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
                 }
+                // Mettre à jour les vues des fragments
+                typeAccidentFragment.updateView(villeSimpleFactory.getTypeAccident());
+                graviteFragment.updateView(villeSimpleFactory.getGravite());
             }
             // Fermer le clavier
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -82,12 +82,8 @@ public class StatisticsActivity extends AppCompatActivity implements OnDataLoade
         });
     }
 
-    private JSONObject getCityFromData(String city) throws JSONException {
-        return (JSONObject) this.accidentData.getJson().get(city);
-    }
-
     @Override
-    public void onDataLoaded(AccidentData accidentData) {
+    public void onDataLoaded(JSONObject accidentData) {
         this.accidentData = accidentData;
         setupFragments();
 

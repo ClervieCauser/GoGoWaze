@@ -1,7 +1,7 @@
 package com.example.gogowaze;
 
-import com.example.gogowaze.statistics.AccidentData;
+import org.json.JSONObject;
 
 public interface OnDataLoadedListener {
-    void onDataLoaded(AccidentData accidentData);
+    void onDataLoaded(JSONObject accidentData);
 }
