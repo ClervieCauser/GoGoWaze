@@ -84,12 +84,14 @@ public class TypeAccidentFragment extends Fragment implements Accident.Observer 
 
             // Créer un TextView pour le type d'accident
             TextView typeAccidentTextView = new TextView(getContext());
+            typeAccidentTextView.setTextSize(14);
             typeAccidentTextView.setText(entry.getKey()); // utiliser la clé de la map comme type d'accident
             typeAccidentTextView.setPadding(10, 10, 10, 10);
             tableRow.addView(typeAccidentTextView);
 
             // Créer un TextView pour le nombre d'accidents
             TextView countAccidentTextView = new TextView(getContext());
+            countAccidentTextView.setTextSize(14);
             countAccidentTextView.setText(String.valueOf(entry.getValue())); // utiliser la valeur de la map comme compte d'accident
             countAccidentTextView.setPadding(10, 10, 10, 10);
             tableRow.addView(countAccidentTextView);
