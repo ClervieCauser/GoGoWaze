@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Configuration"
+        android:textColor="@color/black"
+        android:textSize="80dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonExit"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:backgroundTint="@color/white"
+        android:text="X"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mode_de_transport_template"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintTop_toBottomOf="@id/textView1"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mode de transport :"
+            android:textSize="50dp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="15dp"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/icone_mode_de_transport_template"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/textView2">
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/car_accident"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/imageView2"/>
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/moto"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintStart_toEndOf="@id/imageView1"
+                app:layout_constraintEnd_toStartOf="@id/imageView3"/>
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/truck"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintStart_toEndOf="@id/imageView2"
+                app:layout_constraintEnd_toStartOf="@id/imageView4"/>
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/bike"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintStart_toEndOf="@id/imageView3"
+                app:layout_constraintEnd_toStartOf="@id/imageView5"/>
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/walk"
+                android:layout_marginStart="20dp"
+                app:layout_constraintStart_toEndOf="@id/imageView4"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/radio_button_mode_de_transport_template"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/icone_mode_de_transport_template">
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButton1"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_marginLeft="80dp"
+                    android:scaleX="2"
+                    android:scaleY="2"/>
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_marginLeft="130dp"
+                    android:scaleX="2"
+                    android:scaleY="2"/>
+
+                <RadioButton
+                    android:id="@+id/radioButton3"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_marginLeft="130dp"
+                    android:scaleX="2"
+                    android:scaleY="2" />
+
+                <RadioButton
+                    android:id="@+id/radioButton4"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_marginLeft="130dp"
+                    android:scaleX="2"
+                    android:scaleY="2"/>
+
+                <RadioButton
+                    android:id="@+id/radioButton5"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_marginLeft="130dp"
+                    android:layout_marginRight="15dp"
+                    android:scaleX="2"
+                    android:scaleY="2"/>
+
+            </RadioGroup>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/select_language"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@id/textView1"
+        app:layout_constraintStart_toEndOf="@id/mode_de_transport_template"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Langue :"
+            android:textSize="50dp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Spinner
+            android:id="@+id/spinnerLanguage"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="70dp"
+            android:layout_marginLeft="70dp"
+            android:background="@drawable/spinner_background"
+            android:entries="@array/spinnerLanguage"
+            android:spinnerMode="dropdown"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView3"
+            android:scaleX="2"
+            android:scaleY="2"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/activate_notification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintTop_toBottomOf="@id/mode_de_transport_template"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/filter_notification_template">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Activer / Désactiver\nnotifications :"
+            android:textSize="50dp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/switch1"
+            />
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_marginLeft="30dp"
+            app:layout_constraintStart_toEndOf="@id/textView4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:scaleX="2"
+            android:scaleY="2"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/filter_notification_template"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        app:layout_constraintTop_toBottomOf="@id/mode_de_transport_template"
+        app:layout_constraintStart_toEndOf="@id/activate_notification"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Filtrer notifications :"
+            android:textSize="50dp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/filter_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@id/textView5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <Spinner
+                android:id="@+id/spinner1"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="90dp"
+                android:layout_marginLeft="50dp"
+                android:entries="@array/typeAccident"
+                android:spinnerMode="dropdown"
+                android:background="@drawable/spinner_background"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/spinner2"
+                android:scaleX="2"
+                android:scaleY="2"
+                />
+
+            <Spinner
+                android:id="@+id/spinner2"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="80dp"
+                android:layout_marginLeft="50dp"
+                android:entries="@array/gravite"
+                android:spinnerMode="dropdown"
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@drawable/spinner_background"
+                app:layout_constraintStart_toEndOf="@id/spinner1"
+                app:layout_constraintEnd_toStartOf="@id/spinner3"
+                android:scaleX="2"
+                android:scaleY="2"/>
+
+            <Spinner
+                android:id="@+id/spinner3"
+                android:layout_width="85dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginLeft="50dp"
+                android:entries="@array/perimetre"
+                android:spinnerMode="dropdown"
+                android:background="@drawable/spinner_background"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/spinner2"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:scaleX="2"
+                android:scaleY="2"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/btnValider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Valider Paramètres"
+        android:backgroundTint="@color/black"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:scaleX="2"
+        android:scaleY="2"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

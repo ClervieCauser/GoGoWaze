@@ -10,22 +10,24 @@
     tools:context=".DetailNotificationFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/title_template"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/border">
+        android:background="@drawable/border"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
 
         <TextView
             android:id="@+id/textTitreNotification"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="150dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="74dp"
             android:text="@string/accident_voiture"
+            android:textSize="30dp"
             android:textColor="@color/black"
-            app:layout_constraintEnd_toStartOf="@+id/buttonExit"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
         <Button
             android:id="@+id/buttonExit"
@@ -34,133 +36,146 @@
             android:backgroundTint="@color/white"
             android:text="@string/x"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="12dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.714"
-            app:layout_constraintStart_toEndOf="@+id/textTitreNotification"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/textGravity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="96dp"
-        android:text="@string/gravity"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toStartOf="@+id/radioButtonGroupeGravity"
-        app:layout_constraintHorizontal_bias="0.25"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/gravite_template"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintTop_toBottomOf="@id/title_template">
 
-    <RadioGroup
-        android:id="@+id/radioButtonGroupeGravity"
-        android:layout_width="wrap_content"
-        android:layout_height="72dp"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="70dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <RadioButton
-            android:id="@+id/radioButtonFaible"
+        <TextView
+            android:id="@+id/textGravity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/faible"
-            app:layout_constraintStart_toStartOf="@+id/radioButtonGroupeGravity"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="@string/gravity"
+            android:textSize="25dp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/radioButtonGroupeGravity"/>
 
-        <RadioButton
-            android:id="@+id/radioButtonModeree"
+        <RadioGroup
+            android:id="@+id/radioButtonGroupeGravity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/moderee"
-            app:layout_constraintStart_toEndOf="@+id/radioButtonFaible"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/textGravity">
 
-        <RadioButton
-            android:id="@+id/radioButtonElevee"
+            <RadioButton
+                android:id="@+id/radioButtonFaible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/faible"
+                android:textSize="18dp"
+                app:layout_constraintStart_toStartOf="@+id/radioButtonGroupeGravity"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioButton
+                android:id="@+id/radioButtonModeree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/moderee"
+                android:textSize="18dp"
+                app:layout_constraintStart_toEndOf="@+id/radioButtonFaible"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioButton
+                android:id="@+id/radioButtonElevee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/elevee"
+                android:textSize="18dp"
+                app:layout_constraintStart_toEndOf="@+id/radioButtonModeree"
+                app:layout_constraintTop_toTopOf="parent" />
+        </RadioGroup>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:layout_constraintTop_toBottomOf="@id/gravite_template">
+
+        <TextView
+            android:id="@+id/textType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/elevee"
-            app:layout_constraintStart_toEndOf="@+id/radioButtonModeree"
-            app:layout_constraintTop_toTopOf="parent" />
-    </RadioGroup>
+            android:text="@string/type"
+            android:textSize="25dp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <TextView
-        android:id="@+id/textType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="184dp"
-        android:text="@string/type"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <RadioGroup
-        android:id="@+id/radioButtonGroupeType"
-        android:layout_width="wrap_content"
-        android:layout_height="72dp"
-        android:layout_marginTop="160dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toEndOf="@+id/textType"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <RadioButton
-            android:id="@+id/radioButtonVoiture"
+        <RadioGroup
+            android:id="@+id/radioButtonGroupeType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/voiture"
-            app:layout_constraintStart_toStartOf="@+id/radioButtonGroupeType"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="horizontal"
+            app:layout_constraintStart_toEndOf="@id/textType"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
 
-        <RadioButton
-            android:id="@+id/radioButtonMoto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/moto"
-            app:layout_constraintStart_toEndOf="@+id/radioButtonVoiture"
-            app:layout_constraintTop_toTopOf="parent" />
+            <RadioButton
+                android:id="@+id/radioButtonVoiture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/voiture"
+                android:textSize="12dp"
+                app:layout_constraintStart_toStartOf="@+id/radioButtonGroupeType"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <RadioButton
-            android:id="@+id/radioButtonCamion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/camion"
-            app:layout_constraintStart_toEndOf="@+id/radioButtonMoto"
-            app:layout_constraintTop_toTopOf="parent" />
+            <RadioButton
+                android:id="@+id/radioButtonMoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/moto"
+                android:textSize="12dp"
+                app:layout_constraintStart_toEndOf="@+id/radioButtonVoiture"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <RadioButton
-            android:id="@+id/radioButtonVelo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/velo"
-            app:layout_constraintStart_toEndOf="@+id/radioButtonCamion"
-            app:layout_constraintTop_toTopOf="parent" />
+            <RadioButton
+                android:id="@+id/radioButtonCamion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/camion"
+                android:textSize="12dp"
+                app:layout_constraintStart_toEndOf="@+id/radioButtonMoto"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <RadioButton
-            android:id="@+id/radioButtonPieton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/pieton"
-            app:layout_constraintStart_toEndOf="@+id/radioButtonVelo"
-            app:layout_constraintTop_toTopOf="parent" />
-    </RadioGroup>
+            <RadioButton
+                android:id="@+id/radioButtonVelo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/velo"
+                android:textSize="12dp"
+                app:layout_constraintStart_toEndOf="@+id/radioButtonCamion"
+                app:layout_constraintTop_toTopOf="parent" />
 
+            <RadioButton
+                android:id="@+id/radioButtonPieton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pieton"
+                android:textSize="12dp"
+                app:layout_constraintStart_toEndOf="@+id/radioButtonVelo"
+                app:layout_constraintTop_toTopOf="parent" />
+        </RadioGroup>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/textImage"
@@ -169,6 +184,7 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="260dp"
         android:text="@string/image"
+        android:textSize="25dp"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -189,6 +205,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="448dp"
         android:text="@string/description"
+        android:textSize="25dp"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -197,12 +214,12 @@
         android:id="@+id/textDescriptionLorem"
         android:layout_width="274dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="448dp"
+        android:layout_marginTop="10dp"
         android:text="@string/loremIpsum"
         android:textColor="@color/black"
-        app:layout_constraintStart_toEndOf="@+id/textDescription"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textDescription" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

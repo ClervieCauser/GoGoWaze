@@ -1,15 +1,12 @@
 package com.example.gogowaze;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.preference.PreferenceManager;
 
 import android.app.Dialog;
-import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -22,6 +19,7 @@ import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
 
 import com.example.gogowaze.databinding.ActivityMainBinding;
+import com.example.gogowaze.signalisation.SignalFragment;
 import com.example.gogowaze.statistics.StatisticsActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -78,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                     break;
                 case R.id.stats:
-                    replaceFragment(new StatsFragment());
                     Intent intent2 = new Intent(getApplicationContext(), StatisticsActivity.class);
                     startActivity(intent2);
                     break;
