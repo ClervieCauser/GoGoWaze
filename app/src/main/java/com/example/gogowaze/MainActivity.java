@@ -136,14 +136,14 @@ public class MainActivity extends AppCompatActivity implements SignalFragment.Da
     @Override
     public void onDataReceived(String title, String description) {
         Marker marker = new Marker(map);
-        marker.setPosition(new GeoPoint(43.64950,7.00517));
+        marker.setPosition(new GeoPoint(map.getMapCenter().getLatitude(),map.getMapCenter().getLongitude()));
         marker.setTitle(title);
         marker.setSnippet(description);
         Log.d("", description);
-        if (description == "Faible") {
+        if (description.equals("Faible")) {
             marker.setIcon(getResources().getDrawable(R.drawable.accidentfaible));
         }
-        else if (description == "Modérée") {
+        else if (description.equals("Modérée")) {
             marker.setIcon(getResources().getDrawable(R.drawable.accidentmoderee));
         }
         else{
