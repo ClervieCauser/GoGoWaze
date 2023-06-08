@@ -33,7 +33,7 @@ public class ControllerGravite implements IController {
         addGraviteToGraviteListModel( view.getInputName().getText().toString(),
                 Integer.parseInt(view.getLabelTeam3().getText().toString()),
                 Integer.parseInt(view.getLabelTeam1().getText().toString()),
-                Integer.parseInt(view.getLabelTeam1().getText().toString()));
+                Integer.parseInt(view.getLabelTeam2().getText().toString()));
     }
 
     /**

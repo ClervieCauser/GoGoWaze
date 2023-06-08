@@ -78,7 +78,7 @@ public class CreerStatAdapter extends BaseAdapter {
         ville.setText(model.getVille());
         graviteElevee.setText("Elevées : "+String.valueOf(model.getAccidentsEleves()));
         graviteMoyenne.setText("Moyens : "+String.valueOf(model.getAccidentsModeres()));
-        graviteFaible.setText("Faibles : "+String.valueOf(model.getAccidentsEleves()));
+        graviteFaible.setText("Faibles : "+String.valueOf(model.getAccidentsFaibles()));
 
 
 
