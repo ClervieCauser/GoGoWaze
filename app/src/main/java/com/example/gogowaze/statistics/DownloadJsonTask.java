@@ -15,8 +15,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 
-public class DownloadJsonTask extends AsyncTask<String, Void, AccidentData> {
+public class DownloadJsonTask extends AsyncTask<String, Void, JSONObject> {
     private OnDataLoadedListener onDataLoadedListener;
     private ObjectMapper objectMapper;
 
@@ -26,7 +27,7 @@ public class DownloadJsonTask extends AsyncTask<String, Void, AccidentData> {
     }
 
     @Override
-    protected AccidentData doInBackground(String... urls) {
+    protected JSONObject doInBackground(String... urls) {
         try {
             return downloadUrl(urls[0]);
         } catch (IOException e) {
@@ -34,7 +35,7 @@ public class DownloadJsonTask extends AsyncTask<String, Void, AccidentData> {
         }
     }
 
-    private AccidentData downloadUrl(String myurl) throws IOException {
+    private JSONObject downloadUrl(String myurl) throws IOException {
         try {
             URL url = new URL(myurl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -59,9 +60,12 @@ public class DownloadJsonTask extends AsyncTask<String, Void, AccidentData> {
             JsonNode jsonNode = objectMapper.readTree(jsonStr);
 
             // Convertit le JsonNode en JSONObject pour le traitement ultérieur
+
+            //itemList = mapper.readValue(jsonStr, mapper.getTypeFactory().constructCollectionType(List.class, clazz));
+
             JSONObject json = new JSONObject(jsonNode.toString());
 
-            return new AccidentData(json);
+            return json;
         } catch (JSONException e) {
             e.printStackTrace();
             return null;
@@ -69,7 +73,7 @@ public class DownloadJsonTask extends AsyncTask<String, Void, AccidentData> {
     }
 
     @Override
-    protected void onPostExecute(AccidentData result) {
+    protected void onPostExecute(JSONObject result) {
         if (result == null) {
             return;
         }

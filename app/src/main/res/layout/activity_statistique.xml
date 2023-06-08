@@ -16,7 +16,7 @@
             android:layout_height="53dp"
             android:layout_marginStart="64dp"
             android:gravity="center"
-            android:text="STATISTIQUE"
+            android:text="STATISTIQUES"
             android:textSize="40dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -45,7 +45,7 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Mode de transport" />
+        android:text="Les données sont issues d'une BD datant du 08/06/2023 " />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -79,7 +79,7 @@
             android:layout_width="136dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
-            android:text="Statistiques globales signalés" />
+            android:text="Télécharger les statistiques de la BD" />
 
         <Button
             android:layout_width="wrap_content"
@@ -97,7 +97,7 @@
             android:layout_width="136dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
-            android:text="Créer des statistques" />
+            android:text="Créer des statistiques" />
 
         <Button
             android:layout_width="310px"
@@ -108,13 +108,8 @@
             android:text="Go" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textViewNbStat"
-        android:layout_width="136dp"
-        android:layout_gravity="center"
-        android:layout_height="40dp"
-        android:gravity="center"
-        android:text="430" />
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
