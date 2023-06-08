@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                     break;
                 case R.id.stats:
-                    replaceFragment(new StatsFragment());
+                    //replaceFragment(new StatsFragment());
                     Intent intent2 = new Intent(getApplicationContext(), StatisticsActivity.class);
                     startActivity(intent2);
                     break;

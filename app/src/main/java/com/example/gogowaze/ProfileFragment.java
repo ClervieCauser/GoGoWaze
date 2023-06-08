@@ -1,9 +1,11 @@
 package com.example.gogowaze;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,6 +61,14 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        Configuration config = getResources().getConfiguration();
+        Log.d("ConfigurationActivity", "Orientation: " + config.orientation);
+        if (config.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            // Téléphone en mode paysage
+            return inflater.inflate(R.layout.activity_profile_page_paysage, container, false);
+        } else {
+            // Téléphone en mode portrait ou autre
+            return inflater.inflate(R.layout.activity_profil_page, container, false);
+        }
     }
 }

@@ -6,6 +6,7 @@ import android.Manifest;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -45,7 +46,13 @@ public class SignalFragment extends Fragment {
     private static final int REQUEST_CAMERA_PERMISSION = 2;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_signal, container, false);
+        View view;
+        int currentOrientation = getResources().getConfiguration().orientation;
+        if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+            view = inflater.inflate(R.layout.fragment_signal_tablette, container, false);
+        } else {
+            view = inflater.inflate(R.layout.fragment_signal, container, false);
+        }
 
         btnFermer = view.findViewById(R.id.buttonExit);
         btnAnnuler = view.findViewById(R.id.annulerSignalement);

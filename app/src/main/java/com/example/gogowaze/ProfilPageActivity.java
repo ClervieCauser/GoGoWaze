@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
@@ -35,7 +36,12 @@ public class ProfilPageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profil_page);
+        Configuration config = getResources().getConfiguration();
+        if (config.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            setContentView(R.layout.activity_profile_page_paysage);
+        } else {
+            setContentView(R.layout.activity_profil_page);
+        }
 
         // Obtenez une référence à l'ImageView
         ImageView imageView = findViewById(R.id.imageView);
