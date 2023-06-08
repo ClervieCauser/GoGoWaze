@@ -25,7 +25,6 @@ import java.util.Map;
 
 public class TypeAccidentFragment extends Fragment implements Accident.Observer  {
     private static final String ARG_ACCIDENT_DATA = "accidentData";
-    private AccidentData accidentData;
 
 
     private String currentCity = null;
